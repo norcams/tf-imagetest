@@ -1,0 +1,8 @@
+region = "bgo"
+# Number of instances of each gold image
+count = 1
+region = "bgo"
+# This is needed to access the instance over ssh
+allow_ssh_from_v6 = [
+  "2001:700:2:8300::20dc/128"
+]

@@ -1,0 +1,57 @@
+provider "openstack" {}
+
+## SSH key
+resource "openstack_compute_keypair_v2" "keypair" {
+    name = "${var.name}-${var.role}"
+    region = "${var.region}"
+    public_key = "${file(var.ssh_public_key)}"
+}
+
+## Security group
+resource "openstack_networking_secgroup_v2" "ssh_access" {
+    region = "${var.region}"
+    name = "${var.name}-ssh_access"
+    description = "Security groups for allowing SSH access"
+}
+
+# Allow ssh from IPv6 net
+resource "openstack_networking_secgroup_rule_v2" "rule_ssh_access_ipv6" {
+    count = "${length(var.allow_ssh_from_v6)}"
+    region = "${var.region}"
+    direction = "ingress"
+    ethertype = "IPv6"
+    protocol = "tcp"
+    port_range_min = 22
+    port_range_max = 22
+    remote_ip_prefix = "${element(var.allow_ssh_from_v6, count.index)}"
+    security_group_id = "${openstack_networking_secgroup_v2.ssh_access.id}"
+}
+# Allow ipv6-icmp from IPv6 net
+resource "openstack_networking_secgroup_rule_v2" "rule_icmp_access_ipv6" {
+    count = "${length(var.allow_ssh_from_v6)}"
+    region = "${var.region}"
+    direction = "ingress"
+    ethertype = "IPv6"
+    protocol = "icmp"
+    remote_ip_prefix = "${element(var.allow_ssh_from_v6, count.index)}"
+    security_group_id = "${openstack_networking_secgroup_v2.ssh_access.id}"
+}
+
+## Instance
+resource "openstack_compute_instance_v2" "basic" {
+  count           = "${length(var.gold_images)*var.count}"
+  name            = "${var.name}-${var.role}-${count.index+1}"
+  #name            = "${var.name}-${var.role}-${count.index+1}-${var.gold_images[element(keys(var.gold_images), count.index)]}"  
+  image_name      = "${element(keys(var.gold_images), count.index)}"
+  flavor_name     = "${var.flavor_name}"
+  key_pair        = "${var.name}-${var.role}"
+  security_groups = ["default","${var.name}-ssh_access"]
+
+  network {
+    name = "${var.network}"
+  }
+  #metadata {
+  #  image = "${var.gold_images[element(keys(var.gold_images), count.index)]}"
+  #}
+}
+
