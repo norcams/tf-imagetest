@@ -17,4 +17,4 @@ variable "gold_images" {
   }
 }
 variable "network" { default = "IPv6" }
-
+variable "az" { default = "default-1" }

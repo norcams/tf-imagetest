@@ -39,13 +39,13 @@ resource "openstack_networking_secgroup_rule_v2" "rule_icmp_access_ipv6" {
 
 ## Instance
 resource "openstack_compute_instance_v2" "basic" {
-  count           = "${length(var.gold_images)*var.count}"
-  name            = "${var.name}-${var.role}-${count.index+1}"
-  #name            = "${var.name}-${var.role}-${count.index+1}-${var.gold_images[element(keys(var.gold_images), count.index)]}"  
-  image_name      = "${element(keys(var.gold_images), count.index)}"
-  flavor_name     = "${var.flavor_name}"
-  key_pair        = "${var.name}-${var.role}"
-  security_groups = ["default","${var.name}-ssh_access"]
+  count             = "${length(var.gold_images)*var.count}"
+  name              = "${var.name}-${var.role}-${count.index+1}"
+  image_name        = "${element(keys(var.gold_images), count.index)}"
+  flavor_name       = "${var.flavor_name}"
+  key_pair          = "${var.name}-${var.role}"
+  availability_zone = "${var.region}-${var.az}"
+  security_groups   = ["default","${var.name}-ssh_access"]
 
   network {
     name = "${var.network}"
