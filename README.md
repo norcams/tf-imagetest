@@ -26,7 +26,7 @@ terraform apply -var-file local.ftvars
 
 Your can get an ansible inventory file for more testing by running
 ```
-terraform output inventory > <path-to-file>
+terraform output inventory_v6 > <path-to-file>
 ```
 
 ## Destroy

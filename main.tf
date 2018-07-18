@@ -14,6 +14,19 @@ resource "openstack_networking_secgroup_v2" "ssh_access" {
     description = "Security groups for allowing SSH access"
 }
 
+# Allow ssh from IPv4 net
+resource "openstack_networking_secgroup_rule_v2" "rule_ssh_access_ipv4" {
+    count = "${length(var.allow_ssh_from_v4)}"
+    region = "${var.region}"
+    direction = "ingress"
+    ethertype = "IPv4"
+    protocol = "tcp"
+    port_range_min = 22
+    port_range_max = 22
+    remote_ip_prefix = "${element(var.allow_ssh_from_v4, count.index)}"
+    security_group_id = "${openstack_networking_secgroup_v2.ssh_access.id}"
+}
+
 # Allow ssh from IPv6 net
 resource "openstack_networking_secgroup_rule_v2" "rule_ssh_access_ipv6" {
     count = "${length(var.allow_ssh_from_v6)}"
@@ -26,7 +39,19 @@ resource "openstack_networking_secgroup_rule_v2" "rule_ssh_access_ipv6" {
     remote_ip_prefix = "${element(var.allow_ssh_from_v6, count.index)}"
     security_group_id = "${openstack_networking_secgroup_v2.ssh_access.id}"
 }
-# Allow ipv6-icmp from IPv6 net
+
+# Allow icmp from IPv4 net
+resource "openstack_networking_secgroup_rule_v2" "rule_icmp_access_ipv4" {
+    count = "${length(var.allow_ssh_from_v4)}"
+    region = "${var.region}"
+    direction = "ingress"
+    ethertype = "IPv4"
+    protocol = "icmp"
+    remote_ip_prefix = "${element(var.allow_ssh_from_v4, count.index)}"
+    security_group_id = "${openstack_networking_secgroup_v2.ssh_access.id}"
+}
+
+# Allow icmp from IPv6 net
 resource "openstack_networking_secgroup_rule_v2" "rule_icmp_access_ipv6" {
     count = "${length(var.allow_ssh_from_v6)}"
     region = "${var.region}"
@@ -40,8 +65,8 @@ resource "openstack_networking_secgroup_rule_v2" "rule_icmp_access_ipv6" {
 ## Instance
 resource "openstack_compute_instance_v2" "basic" {
   count             = "${length(var.gold_images)*var.count}"
-  name              = "${var.name}-${var.role}-${count.index+1}"
-  image_name        = "${element(keys(var.gold_images), count.index)}"
+  name              = "${var.name}-${count.index+1}-${lookup(var.image_names, element(var.gold_images, count.index), "unknown")}"
+  image_name        = "${element(var.gold_images, count.index)}"
   flavor_name       = "${var.flavor_name}"
   key_pair          = "${var.name}-${var.role}"
   availability_zone = "${var.region}-${var.az}"
@@ -50,8 +75,5 @@ resource "openstack_compute_instance_v2" "basic" {
   network {
     name = "${var.network}"
   }
-  #metadata {
-  #  image = "${var.gold_images[element(keys(var.gold_images), count.index)]}"
-  #}
 }
 
