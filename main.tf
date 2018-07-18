@@ -2,16 +2,16 @@ provider "openstack" {}
 
 ## SSH key
 resource "openstack_compute_keypair_v2" "keypair" {
-    name = "${var.name}-${var.role}"
+    name = "${terraform.workspace}-${var.name}-${var.role}"
     region = "${var.region}"
     public_key = "${file(var.ssh_public_key)}"
 }
 
 ## Security group
-resource "openstack_networking_secgroup_v2" "ssh_access" {
+resource "openstack_networking_secgroup_v2" "instance_access" {
     region = "${var.region}"
-    name = "${var.name}-ssh_access"
-    description = "Security groups for allowing SSH access"
+    name = "${terraform.workspace}-${var.name}-${var.role}"
+    description = "Security groups for allowing SSH and ICMP access"
 }
 
 # Allow ssh from IPv4 net
@@ -24,7 +24,7 @@ resource "openstack_networking_secgroup_rule_v2" "rule_ssh_access_ipv4" {
     port_range_min = 22
     port_range_max = 22
     remote_ip_prefix = "${element(var.allow_ssh_from_v4, count.index)}"
-    security_group_id = "${openstack_networking_secgroup_v2.ssh_access.id}"
+    security_group_id = "${openstack_networking_secgroup_v2.instance_access.id}"
 }
 
 # Allow ssh from IPv6 net
@@ -37,7 +37,7 @@ resource "openstack_networking_secgroup_rule_v2" "rule_ssh_access_ipv6" {
     port_range_min = 22
     port_range_max = 22
     remote_ip_prefix = "${element(var.allow_ssh_from_v6, count.index)}"
-    security_group_id = "${openstack_networking_secgroup_v2.ssh_access.id}"
+    security_group_id = "${openstack_networking_secgroup_v2.instance_access.id}"
 }
 
 # Allow icmp from IPv4 net
@@ -48,7 +48,7 @@ resource "openstack_networking_secgroup_rule_v2" "rule_icmp_access_ipv4" {
     ethertype = "IPv4"
     protocol = "icmp"
     remote_ip_prefix = "${element(var.allow_ssh_from_v4, count.index)}"
-    security_group_id = "${openstack_networking_secgroup_v2.ssh_access.id}"
+    security_group_id = "${openstack_networking_secgroup_v2.instance_access.id}"
 }
 
 # Allow icmp from IPv6 net
@@ -59,13 +59,13 @@ resource "openstack_networking_secgroup_rule_v2" "rule_icmp_access_ipv6" {
     ethertype = "IPv6"
     protocol = "icmp"
     remote_ip_prefix = "${element(var.allow_ssh_from_v6, count.index)}"
-    security_group_id = "${openstack_networking_secgroup_v2.ssh_access.id}"
+    security_group_id = "${openstack_networking_secgroup_v2.instance_access.id}"
 }
 
 ## Instance
 resource "openstack_compute_instance_v2" "basic" {
   count             = "${length(var.gold_images)*var.count}"
-  name              = "${var.name}-${count.index+1}-${lookup(var.image_names, element(var.gold_images, count.index), "unknown")}"
+  name              = "${var.name}-${count.index}-${lookup(var.image_names, element(var.gold_images, count.index), "unknown")}"
   image_name        = "${element(var.gold_images, count.index)}"
   flavor_name       = "${var.flavor_name}"
   key_pair          = "${var.name}-${var.role}"
