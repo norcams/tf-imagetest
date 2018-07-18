@@ -40,7 +40,7 @@ data "template_file" "ansible_inventory_v4" {
   }
 }
 
-output "inventoryi_v6" {
+output "inventory_v6" {
   value = "${data.template_file.ansible_inventory_v6.rendered}"
 }
 
