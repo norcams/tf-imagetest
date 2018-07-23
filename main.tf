@@ -68,12 +68,16 @@ resource "openstack_compute_instance_v2" "basic" {
   name              = "${var.name}-${count.index}-${lookup(var.image_names, element(var.gold_images, count.index), "unknown")}"
   image_name        = "${element(var.gold_images, count.index)}"
   flavor_name       = "${var.flavor_name}"
-  key_pair          = "${var.name}-${var.role}"
+  key_pair          = "${terraform.workspace}-${var.name}-${var.role}"
   availability_zone = "${var.region}-${var.az}"
-  security_groups   = ["default","${var.name}-ssh_access"]
+  security_groups   = ["default","${terraform.workspace}-${var.name}-${var.role}"]
 
   network {
     name = "${var.network}"
   }
+  metadata {
+    workspace = "${terraform.workspace}"
+  }
+
 }
 
