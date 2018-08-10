@@ -1,4 +1,3 @@
-region = "bgo"
 # Number of instances of each gold image
 count = 1
 region = "bgo"
@@ -6,3 +5,7 @@ region = "bgo"
 allow_ssh_from_v6 = [
   "2001:700:2:8300::20dc/128"
 ]
+allow_ssh_from_v4 = [
+  "158.39.74.6/32"
+]
+

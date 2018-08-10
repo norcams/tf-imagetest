@@ -11,6 +11,7 @@ Read more at https://www.terraform.io/
 ## Setup
 
 Create your own local.tfvars. Use the example and edit `allow_ssh_from_v6` to allow yourself access to the instances.
+*Tip*: Use one tfvars per region
 
 ## Run
 
