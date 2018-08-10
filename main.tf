@@ -65,8 +65,9 @@ resource "openstack_networking_secgroup_rule_v2" "rule_icmp_access_ipv6" {
 ## Instance
 resource "openstack_compute_instance_v2" "basic" {
   count             = "${length(var.gold_images)*var.count}"
-  name              = "${var.name}-${count.index}-${lookup(var.image_names, element(var.gold_images, count.index), "unknown")}"
+  name              = "${var.region}-${var.name}-${count.index}-${lookup(var.image_names, element(var.gold_images, count.index), "unknown")}"
   image_name        = "${element(var.gold_images, count.index)}"
+  region            = "${var.region}"
   flavor_name       = "${var.flavor_name}"
   key_pair          = "${terraform.workspace}-${var.name}-${var.role}"
   availability_zone = "${var.region}-${var.az}"
@@ -75,9 +76,23 @@ resource "openstack_compute_instance_v2" "basic" {
   network {
     name = "${var.network}"
   }
-  metadata {
-    workspace = "${terraform.workspace}"
-  }
+  metadata = "${var.metadata}"
 
+}
+
+## Volume
+resource "openstack_blockstorage_volume_v2" "volume" {
+  count       = "${length(var.gold_images)*var.count}"
+  region      = "${var.region}"
+  name        = "${var.region}-${var.name}-${count.index}"
+  size        = "${var.volume_size}"
+}
+
+## Attach volume
+resource "openstack_compute_volume_attach_v2" "volumes" {
+  count       = "${length(var.gold_images)*var.count}"
+  region      = "${var.region}"
+  instance_id = "${element(openstack_compute_instance_v2.basic.*.id, count.index)}"
+  volume_id   = "${element(openstack_blockstorage_volume_v2.volume.*.id, count.index)}"
 }
 

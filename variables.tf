@@ -14,11 +14,15 @@ variable "gold_images" {
     "GOLD CentOS 7",
     "GOLD Debian 9",
     "GOLD Ubuntu 16.04 LTS",
-    "GOLD Ubuntu 18.04 LTS"
+    "GOLD Ubuntu 18.04 LTS",
+    "GOLD Fedora 27",
+    "GOLD Fedora 28"
   ]
 }
 variable "network" { default = "IPv6" }
+variable "volume_size" { default = 10 }
 variable "az" { default = "default-1" }
+variable "metadata" { type = "map" default = {}}
 variable "image_names" {
   type = "map"
   default = {
