@@ -15,7 +15,6 @@ variable "gold_images" {
     "GOLD Debian 9",
     "GOLD Ubuntu 16.04 LTS",
     "GOLD Ubuntu 18.04 LTS",
-    "GOLD Fedora 27",
     "GOLD Fedora 28"
   ]
 }
@@ -29,7 +28,6 @@ variable "image_names" {
     "GOLD CentOS 6" = "centos6"
     "GOLD CentOS 7" = "centos7"
     "GOLD Debian 9" = "debian9"
-    "GOLD Fedora 27" = "fedora27"
     "GOLD Fedora 28" = "fedora28"
     "GOLD Ubuntu 16.04 LTS" = "ubuntu1604"
     "GOLD Ubuntu 18.04 LTS" = "ubuntu1804"
