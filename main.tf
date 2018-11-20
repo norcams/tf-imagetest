@@ -77,6 +77,7 @@ resource "openstack_compute_instance_v2" "basic" {
     name = "${var.network}"
   }
   metadata = "${var.metadata}"
+  depends_on = ["openstack_networking_secgroup_v2.instance_access"]
 
 }
 
