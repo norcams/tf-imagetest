@@ -15,11 +15,13 @@ variable "gold_images" {
     "GOLD Debian 9",
     "GOLD Ubuntu 16.04 LTS",
     "GOLD Ubuntu 18.04 LTS",
-    "GOLD Fedora 28"
+    "GOLD Ubuntu 19.04",
+    "GOLD Fedora 30"
   ]
 }
 variable "network" { default = "IPv6" }
 variable "volume_size" { default = 10 }
+variable "volume_type" { default = "rbd" }
 variable "az" { default = "default-1" }
 variable "metadata" { type = "map" default = {}}
 variable "image_names" {
@@ -28,9 +30,10 @@ variable "image_names" {
     "GOLD CentOS 6" = "centos6"
     "GOLD CentOS 7" = "centos7"
     "GOLD Debian 9" = "debian9"
-    "GOLD Fedora 28" = "fedora28"
+    "GOLD Fedora 30" = "fedora30"
     "GOLD Ubuntu 16.04 LTS" = "ubuntu1604"
     "GOLD Ubuntu 18.04 LTS" = "ubuntu1804"
+    "GOLD Ubuntu 19.04" = "ubuntu1904"
     "Outdated (CentOS)" = "centos"
     "Outdated (Debian)" = "debian"
     "Outdated (Fedora)" = "fedora"
@@ -43,10 +46,10 @@ variable "image_users" {
     "GOLD CentOS 6" = "centos"
     "GOLD CentOS 7" = "centos"
     "GOLD Debian 9" = "debian"
-    "GOLD Fedora 27" = "fedora"
-    "GOLD Fedora 28" = "fedora"
+    "GOLD Fedora 30" = "fedora"
     "GOLD Ubuntu 16.04 LTS" = "ubuntu"
     "GOLD Ubuntu 18.04 LTS" = "ubuntu"
+    "GOLD Ubuntu 19.04" = "ubuntu"
     "Outdated (CentOS)" = "centos"
     "Outdated (Debian)" = "debian"
     "Outdated (Fedora)" = "fedora"

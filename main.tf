@@ -87,6 +87,7 @@ resource "openstack_blockstorage_volume_v2" "volume" {
   region      = "${var.region}"
   name        = "${var.region}-${var.name}-${count.index}"
   size        = "${var.volume_size}"
+  volume_type = "${var.volume_type}"
 }
 
 ## Attach volume
