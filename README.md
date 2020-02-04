@@ -20,7 +20,7 @@ cd tf-imagetest
 terraform init
 terraform get
 terraform plan -var-file local.tfvars
-terraform apply -var-file local.ftvars
+terraform apply -var-file local.tfvars
 ```
 
 ## Ansible inventory
@@ -33,6 +33,6 @@ terraform output inventory_v6 > <path-to-file>
 ## Destroy
 ```
 cd tf-imagetest
-terraform destroy -var-file local.ftvars
+terraform destroy -var-file local.tfvars
 ```
 
