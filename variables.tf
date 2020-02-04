@@ -41,7 +41,7 @@ variable "gold_images" {
     "GOLD Ubuntu 16.04 LTS",
     "GOLD Ubuntu 18.04 LTS",
     "GOLD Ubuntu 19.04",
-    "GOLD Fedora 30",
+    "GOLD Fedora 31",
   ]
 }
 
