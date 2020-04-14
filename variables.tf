@@ -38,9 +38,10 @@ variable "gold_images" {
     "GOLD CentOS 6",
     "GOLD CentOS 7",
     "GOLD Debian 9",
+    "GOLD Debian 10",
     "GOLD Ubuntu 16.04 LTS",
     "GOLD Ubuntu 18.04 LTS",
-    "GOLD Ubuntu 19.04",
+    "GOLD Ubuntu 19.10",
     "GOLD Fedora 31",
   ]
 }
@@ -72,10 +73,11 @@ variable "image_names" {
     "GOLD CentOS 6"         = "centos6"
     "GOLD CentOS 7"         = "centos7"
     "GOLD Debian 9"         = "debian9"
+    "GOLD Debian 10"        = "debian10"
     "GOLD Fedora 31"        = "fedora31"
     "GOLD Ubuntu 16.04 LTS" = "ubuntu1604"
     "GOLD Ubuntu 18.04 LTS" = "ubuntu1804"
-    "GOLD Ubuntu 19.04"     = "ubuntu1904"
+    "GOLD Ubuntu 19.10"     = "ubuntu1910"
     "Outdated (CentOS)"     = "centos"
     "Outdated (Debian)"     = "debian"
     "Outdated (Fedora)"     = "fedora"
@@ -89,10 +91,11 @@ variable "image_users" {
     "GOLD CentOS 6"         = "centos"
     "GOLD CentOS 7"         = "centos"
     "GOLD Debian 9"         = "debian"
-    "GOLD Fedora 30"        = "fedora"
+    "GOLD Debian 10"        = "debian"
+    "GOLD Fedora 31"        = "fedora"
     "GOLD Ubuntu 16.04 LTS" = "ubuntu"
     "GOLD Ubuntu 18.04 LTS" = "ubuntu"
-    "GOLD Ubuntu 19.04"     = "ubuntu"
+    "GOLD Ubuntu 19.10"     = "ubuntu"
     "Outdated (CentOS)"     = "centos"
     "Outdated (Debian)"     = "debian"
     "Outdated (Fedora)"     = "fedora"
