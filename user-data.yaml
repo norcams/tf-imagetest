@@ -1,0 +1,6 @@
+#cloud-config
+
+write_files:
+  - content: |
+        Created with Terraform to test NREC gold image
+    path: /etc/motd
