@@ -35,14 +35,13 @@ variable "flavor_name" {
 variable "gold_images" {
   type = list(string)
   default = [
-    "GOLD CentOS 6",
     "GOLD CentOS 7",
+    "GOLD CentOS 8",
     "GOLD Debian 9",
     "GOLD Debian 10",
-    "GOLD Ubuntu 16.04 LTS",
     "GOLD Ubuntu 18.04 LTS",
-    "GOLD Ubuntu 19.10",
-    "GOLD Fedora 31",
+    "GOLD Ubuntu 20.04 LTS",
+    "GOLD Fedora 32",
   ]
 }
 
@@ -70,35 +69,43 @@ variable "metadata" {
 variable "image_names" {
   type = map(string)
   default = {
-    "GOLD CentOS 6"         = "centos6"
-    "GOLD CentOS 7"         = "centos7"
-    "GOLD Debian 9"         = "debian9"
-    "GOLD Debian 10"        = "debian10"
-    "GOLD Fedora 31"        = "fedora31"
-    "GOLD Ubuntu 16.04 LTS" = "ubuntu1604"
-    "GOLD Ubuntu 18.04 LTS" = "ubuntu1804"
-    "GOLD Ubuntu 19.10"     = "ubuntu1910"
-    "Outdated (CentOS)"     = "centos"
-    "Outdated (Debian)"     = "debian"
-    "Outdated (Fedora)"     = "fedora"
-    "Outdated (Ubuntu)"     = "ubuntu"
+    "GOLD CentOS 7"           = "centos7"
+    "GOLD CentOS 8"           = "centos8"
+    "GOLD Debian 9"           = "debian9"
+    "GOLD Debian 10"          = "debian10"
+    "GOLD Fedora 32"          = "fedora32"
+    "GOLD Ubuntu 18.04 LTS"   = "ubuntu1804"
+    "GOLD Ubuntu 20.04 LTS"   = "ubuntu2004"
+    "Outdated (CentOS 7)"     = "centos"
+    "Outdated (CentOS 8)"     = "centos"
+    "Outdated (Debian 9)"     = "debian"
+    "Outdated (Debian 10)"    = "debian"
+    "Outdated (Fedora 32)"    = "fedora"
+    "Outdated (Ubuntu 18.04)" = "ubuntu"
+    "Outdated (Ubuntu 20.04)" = "ubuntu"
+    "vGPU CentOS 7"           = "centos"
+    "vGPU Ubuntu 20.04 LTS"   = "ubuntu"
   }
 }
 
 variable "image_users" {
   type = map(string)
   default = {
-    "GOLD CentOS 6"         = "centos"
-    "GOLD CentOS 7"         = "centos"
-    "GOLD Debian 9"         = "debian"
-    "GOLD Debian 10"        = "debian"
-    "GOLD Fedora 31"        = "fedora"
-    "GOLD Ubuntu 16.04 LTS" = "ubuntu"
-    "GOLD Ubuntu 18.04 LTS" = "ubuntu"
-    "GOLD Ubuntu 19.10"     = "ubuntu"
-    "Outdated (CentOS)"     = "centos"
-    "Outdated (Debian)"     = "debian"
-    "Outdated (Fedora)"     = "fedora"
-    "Outdated (Ubuntu)"     = "ubuntu"
+    "GOLD CentOS 7"           = "centos"
+    "GOLD CentOS 8"           = "centos"
+    "GOLD Debian 9"           = "debian"
+    "GOLD Debian 10"          = "debian"
+    "GOLD Fedora 32"          = "fedora"
+    "GOLD Ubuntu 18.04 LTS"   = "ubuntu"
+    "GOLD Ubuntu 20.04 LTS"   = "ubuntu"
+    "Outdated (CentOS 7)"     = "centos"
+    "Outdated (CentOS 8)"     = "centos"
+    "Outdated (Debian 9)"     = "debian"
+    "Outdated (Debian 10)"    = "debian"
+    "Outdated (Fedora 32)"    = "fedora"
+    "Outdated (Ubuntu 18.04)" = "ubuntu"
+    "Outdated (Ubuntu 20.04)" = "ubuntu"
+    "vGPU CentOS 7"           = "centos"
+    "vGPU Ubuntu 20.04 LTS"   = "ubuntu"
   }
 }
