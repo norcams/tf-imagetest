@@ -58,7 +58,7 @@ resource "openstack_networking_secgroup_rule_v2" "rule_icmp_access_ipv6" {
   region            = var.region
   direction         = "ingress"
   ethertype         = "IPv6"
-  protocol          = "icmp"
+  protocol          = "ipv6-icmp"
   remote_ip_prefix  = element(var.allow_ssh_from_v6, count.index)
   security_group_id = openstack_networking_secgroup_v2.instance_access.id
 }
@@ -77,6 +77,7 @@ resource "openstack_compute_instance_v2" "basic" {
   key_pair          = "${terraform.workspace}-${var.name}-${var.role}"
   availability_zone = "${var.region}-${var.az}"
   security_groups   = ["default", "${terraform.workspace}-${var.name}-${var.role}"]
+  tags              = []
 
   network {
     name = var.network
