@@ -48,10 +48,10 @@ variable "gold_images" {
     "GOLD CentOS 7",
     "GOLD Debian 10",
     "GOLD Debian 11",
-#    "GOLD Ubuntu 18.04 LTS",
     "GOLD Ubuntu 20.04 LTS",
     "GOLD Ubuntu 22.04 LTS",
     "GOLD Fedora 37",
+    "GOLD Fedora 38",
     "GOLD CentOS Stream 8",
     "GOLD CentOS Stream 9",
     "GOLD Alma Linux 8",
@@ -92,6 +92,7 @@ variable "image_names" {
     "GOLD Debian 11"                = "debian11"
     "GOLD Fedora 36"                = "fedora36"
     "GOLD Fedora 37"                = "fedora37"
+    "GOLD Fedora 38"                = "fedora38"
     "GOLD Ubuntu 18.04 LTS"         = "ubuntu1804"
     "GOLD Ubuntu 20.04 LTS"         = "ubuntu2004"
     "GOLD Ubuntu 22.04 LTS"         = "ubuntu2204"
@@ -109,6 +110,7 @@ variable "image_names" {
     "Outdated (Debian 11)"          = "debian11"
     "Outdated (Fedora 36)"          = "fedora36"
     "Outdated (Fedora 37)"          = "fedora37"
+    "Outdated (Fedora 38)"          = "fedora38"
     "Outdated (Ubuntu 18.04)"       = "ubuntu_1804"
     "Outdated (Ubuntu 20.04)"       = "ubuntu_2004"
     "Outdated (Ubuntu 22.04)"       = "ubuntu_2204"
@@ -140,11 +142,12 @@ variable "image_users" {
     "GOLD Debian 11"                = "debian"
     "GOLD Fedora 36"                = "fedora"
     "GOLD Fedora 37"                = "fedora"
+    "GOLD Fedora 38"                = "fedora"
     "GOLD Ubuntu 18.04 LTS"         = "ubuntu"
     "GOLD Ubuntu 20.04 LTS"         = "ubuntu"
     "GOLD Ubuntu 22.04 LTS"         = "ubuntu"
     "GOLD Ubuntu 21.10"             = "ubuntu"
-    "GOLD CentOS Stream 8"          = "cloud-user"
+    "GOLD CentOS Stream 8"          = "centos"
     "GOLD CentOS Stream 9"          = "cloud-user"
     "GOLD Alma Linux 8"             = "almalinux"
     "GOLD Alma Linux 9"             = "almalinux"
@@ -162,7 +165,7 @@ variable "image_users" {
     "Outdated (Ubuntu 22.04)"       = "ubuntu"
     "Outdated (Ubuntu 21.10)"       = "ubuntu"
     "Outdated (CentOS Stream 8)"    = "centos"
-    "Outdated (CentOS Stream 9)"    = "centos"
+    "Outdated (CentOS Stream 9)"    = "cloud-user"
     "Outdated (Alma Linux 8)"       = "almalinux"
     "Outdated (Alma Linux 9)"       = "almalinux"
     "Outdated (Rocky Linux 8)"      = "rocky"
