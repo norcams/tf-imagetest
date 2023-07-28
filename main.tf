@@ -48,7 +48,7 @@ resource "openstack_networking_secgroup_rule_v2" "rule_icmp_access_ipv4" {
   direction         = "ingress"
   ethertype         = "IPv4"
   protocol          = "icmp"
-  remote_ip_prefix  = element(var.allow_ssh_from_v4, count.index)
+  remote_ip_prefix  = element(var.allow_icmp_from_v4, count.index)
   security_group_id = openstack_networking_secgroup_v2.instance_access.id
 }
 
@@ -59,7 +59,7 @@ resource "openstack_networking_secgroup_rule_v2" "rule_icmp_access_ipv6" {
   direction         = "ingress"
   ethertype         = "IPv6"
   protocol          = "ipv6-icmp"
-  remote_ip_prefix  = element(var.allow_ssh_from_v6, count.index)
+  remote_ip_prefix  = element(var.allow_icmp_from_v6, count.index)
   security_group_id = openstack_networking_secgroup_v2.instance_access.id
 }
 

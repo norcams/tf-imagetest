@@ -24,6 +24,16 @@ variable "allow_ssh_from_v4" {
   default = []
 }
 
+variable "allow_icmp_from_v6" {
+  type    = list(string)
+  default = ["::/0"]
+}
+
+variable "allow_icmp_from_v4" {
+  type    = list(string)
+  default = ["0.0.0.0/0"]
+}
+
 variable "ssh_public_key" {
   default = "~/.ssh/id_rsa.pub"
 }
