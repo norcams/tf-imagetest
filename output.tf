@@ -53,7 +53,7 @@ data "template_file" "ansible_host_v4" {
 data "template_file" "ansible_inventory_v6" {
   template = "[$${name}]\n$${hosts}\n"
   vars = {
-    name  = "${var.name}-${var.role}"
+    name  = "${var.name}"
     hosts = join("\n", data.template_file.ansible_host_v6.*.rendered)
   }
 }
@@ -61,7 +61,7 @@ data "template_file" "ansible_inventory_v6" {
 data "template_file" "ansible_inventory_v4" {
   template = "[$${name}]\n$${hosts}\n"
   vars = {
-    name  = "${var.name}-${var.role}"
+    name  = "${var.name}"
     hosts = join("\n", data.template_file.ansible_host_v4.*.rendered)
   }
 }
