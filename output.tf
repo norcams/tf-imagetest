@@ -7,7 +7,7 @@ variable "search" {
 }
 
 data "template_file" "ansible_host_v6" {
-  template = "$${name} ansible_host=$${ip} ansible_ssh_user=$${user}"
+  template = "$${name} ansible_host=$${ip} ansible_user=$${user}"
   count    = length(var.gold_images) * var.ncount
   vars = {
     ip = replace(
@@ -31,7 +31,7 @@ data "template_file" "ansible_host_v6" {
 }
 
 data "template_file" "ansible_host_v4" {
-  template = "$${name} ansible_host=$${ip} ansible_ssh_user=$${user}"
+  template = "$${name} ansible_host=$${ip} ansible_user=$${user}"
   count    = length(var.gold_images) * var.ncount
   vars = {
     ip = element(
