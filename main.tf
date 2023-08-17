@@ -43,7 +43,7 @@ resource "openstack_networking_secgroup_rule_v2" "rule_ssh_access_ipv6" {
 
 # Allow icmp from IPv4 net
 resource "openstack_networking_secgroup_rule_v2" "rule_icmp_access_ipv4" {
-  count             = length(var.allow_ssh_from_v4)
+  count             = length(var.allow_icmp_from_v4)
   region            = var.region
   direction         = "ingress"
   ethertype         = "IPv4"
@@ -54,7 +54,7 @@ resource "openstack_networking_secgroup_rule_v2" "rule_icmp_access_ipv4" {
 
 # Allow icmp from IPv6 net
 resource "openstack_networking_secgroup_rule_v2" "rule_icmp_access_ipv6" {
-  count             = length(var.allow_ssh_from_v6)
+  count             = length(var.allow_icmp_from_v6)
   region            = var.region
   direction         = "ingress"
   ethertype         = "IPv6"
