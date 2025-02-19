@@ -36,3 +36,21 @@ cd tf-imagetest
 terraform destroy -var-file local.tfvars
 ```
 
+## Upgrade providers
+```
+cd tf-imagetest
+terraform init -upgrade
+```
+
+## Testing
+
+Tested 2025-02-19 with:
+
+```
+$ terraform --version
+Terraform v1.10.5
+on linux_amd64
++ provider registry.terraform.io/hashicorp/template v2.2.0
++ provider registry.terraform.io/terraform-provider-openstack/openstack v3.0.0
+```
+
