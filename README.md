@@ -1,12 +1,12 @@
-# Terraform UH-IaaS image test 
+# Terraform NREC image test
 
 Read more at https://www.terraform.io/
 
 ## Requirements
 
 * terraform in $PATH
-* access to a project in a region in UH-IaaS
-* OS env or clouds.yaml with access to the project
+* access to a project in a region in NREC
+* OS_ env or clouds.yaml with access to the project
 
 ## Setup
 
