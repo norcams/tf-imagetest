@@ -50,8 +50,8 @@ variable "gold_images" {
     "GOLD Ubuntu 20.04 LTS",
     "GOLD Ubuntu 22.04 LTS",
     "GOLD Ubuntu 24.04 LTS",
-    "GOLD Fedora 39",
     "GOLD Fedora 40",
+    "GOLD Fedora 41",
     "GOLD CentOS Stream 9",
     "GOLD Alma Linux 8",
     "GOLD Alma Linux 9",
@@ -86,8 +86,8 @@ variable "image_names" {
   default = {
     "GOLD Debian 11"                = "debian11"
     "GOLD Debian 12"                = "debian12"
-    "GOLD Fedora 39"                = "fedora39"
     "GOLD Fedora 40"                = "fedora40"
+    "GOLD Fedora 41"                = "fedora41"
     "GOLD Ubuntu 20.04 LTS"         = "ubuntu2004"
     "GOLD Ubuntu 22.04 LTS"         = "ubuntu2204"
     "GOLD Ubuntu 24.04 LTS"         = "ubuntu2404"
@@ -98,8 +98,8 @@ variable "image_names" {
     "GOLD Rocky Linux 9"            = "rockylinux9"
     "Outdated (Debian 11)"          = "debian11"
     "Outdated (Debian 12)"          = "debian12"
-    "Outdated (Fedora 39)"          = "fedora39"
     "Outdated (Fedora 40)"          = "fedora40"
+    "Outdated (Fedora 41)"          = "fedora41"
     "Outdated (Ubuntu 20.04)"       = "ubuntu_2004"
     "Outdated (Ubuntu 22.04)"       = "ubuntu_2204"
     "Outdated (Ubuntu 24.04)"       = "ubuntu_2404"
@@ -124,8 +124,8 @@ variable "image_users" {
   default = {
     "GOLD Debian 11"                = "debian"
     "GOLD Debian 12"                = "debian"
-    "GOLD Fedora 39"                = "fedora"
     "GOLD Fedora 40"                = "fedora"
+    "GOLD Fedora 41"                = "fedora"
     "GOLD Ubuntu 20.04 LTS"         = "ubuntu"
     "GOLD Ubuntu 22.04 LTS"         = "ubuntu"
     "GOLD Ubuntu 24.04 LTS"         = "ubuntu"
@@ -136,8 +136,8 @@ variable "image_users" {
     "GOLD Rocky Linux 9"            = "rocky"
     "Outdated (Debian 11)"          = "debian"
     "Outdated (Debian 112)"          = "debian"
-    "Outdated (Fedora 39)"          = "fedora"
     "Outdated (Fedora 40)"          = "fedora"
+    "Outdated (Fedora 41)"          = "fedora"
     "Outdated (Ubuntu 20.04)"       = "ubuntu"
     "Outdated (Ubuntu 22.04)"       = "ubuntu"
     "Outdated (Ubuntu 24.04)"       = "ubuntu"
