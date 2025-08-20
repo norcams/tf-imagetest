@@ -35,7 +35,7 @@ variable "allow_icmp_from_v4" {
 }
 
 variable "ssh_public_key" {
-  default = "~/.ssh/id_rsa.pub"
+  default = "~/.ssh/id_ed25519.pub"
 }
 
 variable "flavor_name" {
@@ -47,16 +47,18 @@ variable "gold_images" {
   default = [
     "GOLD Debian 11",
     "GOLD Debian 12",
-    "GOLD Ubuntu 20.04 LTS",
     "GOLD Ubuntu 22.04 LTS",
     "GOLD Ubuntu 24.04 LTS",
-    "GOLD Fedora 40",
     "GOLD Fedora 41",
+    "GOLD Fedora 42",
     "GOLD CentOS Stream 9",
+    "GOLD CentOS Stream 10",
     "GOLD Alma Linux 8",
     "GOLD Alma Linux 9",
+    "GOLD Alma Linux 10",
     "GOLD Rocky Linux 8",
-    "GOLD Rocky Linux 9"
+    "GOLD Rocky Linux 9",
+    "GOLD Rocky Linux 10"
   ]
 }
 
@@ -86,36 +88,42 @@ variable "image_names" {
   default = {
     "GOLD Debian 11"                = "debian11"
     "GOLD Debian 12"                = "debian12"
-    "GOLD Fedora 40"                = "fedora40"
     "GOLD Fedora 41"                = "fedora41"
-    "GOLD Ubuntu 20.04 LTS"         = "ubuntu2004"
+    "GOLD Fedora 42"                = "fedora42"
     "GOLD Ubuntu 22.04 LTS"         = "ubuntu2204"
     "GOLD Ubuntu 24.04 LTS"         = "ubuntu2404"
     "GOLD CentOS Stream 9"          = "centosstream9"
+    "GOLD CentOS Stream 10"         = "centosstream10"
     "GOLD Alma Linux 8"             = "almalinux8"
     "GOLD Alma Linux 9"             = "almalinux9"
+    "GOLD Alma Linux 10"            = "almalinux10"
     "GOLD Rocky Linux 8"            = "rockylinux8"
     "GOLD Rocky Linux 9"            = "rockylinux9"
+    "GOLD Rocky Linux 10"           = "rockylinux10"
     "Outdated (Debian 11)"          = "debian11"
     "Outdated (Debian 12)"          = "debian12"
-    "Outdated (Fedora 40)"          = "fedora40"
     "Outdated (Fedora 41)"          = "fedora41"
-    "Outdated (Ubuntu 20.04)"       = "ubuntu_2004"
+    "Outdated (Fedora 42)"          = "fedora42"
     "Outdated (Ubuntu 22.04)"       = "ubuntu_2204"
     "Outdated (Ubuntu 24.04)"       = "ubuntu_2404"
     "Outdated (CentOS Stream 9)"    = "centosstream9"
+    "Outdated (CentOS Stream 10)"   = "centosstream10"
     "Outdated (Alma Linux 8)"       = "almalinux8"
     "Outdated (Alma Linux 9)"       = "almalinux9"
+    "Outdated (Alma Linux 10)"      = "almalinux10"
     "Outdated (Rocky Linux 8)"      = "rocky8"
     "Outdated (Rocky Linux 9)"      = "rocky9"
+    "Outdated (Rocky Linux 10)"     = "rocky10"
     "vGPU Alma Linux 8"             = "almalinux8_nv_vgpu"
     "vGPU Alma Linux 9"             = "almalinux9_nv_vgpu"
+    "vGPU Alma Linux 10"            = "almalinux10_nv_vgpu"
     "vGPU Ubuntu 20.04 LTS"         = "ubuntu_2004_nv_vgpu"
     "vGPU Ubuntu 22.04 LTS"         = "ubuntu_2204_nv_vgpu"
     "Outdated vGPU (Alma Linux 8)"  = "almalinux8_nv_vgpu"
     "Outdated vGPU (Alma Linux 9)"  = "almalinux9_nv_vgpu"
-    "Outdated vGPU (Ubuntu 20.04)"  = "ubuntu_2004_nv_vgpu"
+    "Outdated vGPU (Alma Linux 10)" = "almalinux10_nv_vgpu"
     "Outdated vGPU (Ubuntu 22.04)"  = "ubuntu_2204_nv_vgpu"
+    "Outdated vGPU (Ubuntu 24.04)"  = "ubuntu_2404_nv_vgpu"
   }
 }
 
@@ -124,36 +132,40 @@ variable "image_users" {
   default = {
     "GOLD Debian 11"                = "debian"
     "GOLD Debian 12"                = "debian"
-    "GOLD Fedora 40"                = "fedora"
     "GOLD Fedora 41"                = "fedora"
-    "GOLD Ubuntu 20.04 LTS"         = "ubuntu"
+    "GOLD Fedora 42"                = "fedora"
     "GOLD Ubuntu 22.04 LTS"         = "ubuntu"
     "GOLD Ubuntu 24.04 LTS"         = "ubuntu"
     "GOLD CentOS Stream 9"          = "cloud-user"
+    "GOLD CentOS Stream 10"         = "cloud-user"
     "GOLD Alma Linux 8"             = "almalinux"
     "GOLD Alma Linux 9"             = "almalinux"
+    "GOLD Alma Linux 10"            = "almalinux"
     "GOLD Rocky Linux 8"            = "rocky"
     "GOLD Rocky Linux 9"            = "rocky"
+    "GOLD Rocky Linux 10"           = "rocky"
     "Outdated (Debian 11)"          = "debian"
-    "Outdated (Debian 112)"          = "debian"
-    "Outdated (Fedora 40)"          = "fedora"
+    "Outdated (Debian 12)"          = "debian"
     "Outdated (Fedora 41)"          = "fedora"
-    "Outdated (Ubuntu 20.04)"       = "ubuntu"
+    "Outdated (Fedora 42)"          = "fedora"
     "Outdated (Ubuntu 22.04)"       = "ubuntu"
     "Outdated (Ubuntu 24.04)"       = "ubuntu"
     "Outdated (CentOS Stream 9)"    = "cloud-user"
+    "Outdated (CentOS Stream 10)"   = "cloud-user"
     "Outdated (Alma Linux 8)"       = "almalinux"
     "Outdated (Alma Linux 9)"       = "almalinux"
+    "Outdated (Alma Linux 10)"      = "almalinux"
     "Outdated (Rocky Linux 8)"      = "rocky"
     "Outdated (Rocky Linux 9)"      = "rocky"
-    "vGPU Alma Linux 8"		    = "almalinux"
+    "Outdated (Rocky Linux 10)"     = "rocky"
+    "vGPU Alma Linux 8"             = "almalinux"
     "vGPU Alma Linux 9"             = "almalinux"
-    "vGPU Ubuntu 20.04 LTS"         = "ubuntu"
+    "vGPU Alma Linux 10"            = "almalinux"
     "vGPU Ubuntu 22.04 LTS"         = "ubuntu"
     "vGPU Ubuntu 24.04 LTS"         = "ubuntu"
     "Outdated vGPU (Alma Linux 8)"  = "almalinux"
     "Outdated vGPU (Alma Linux 9)"  = "almalinux"
-    "Outdated vGPU (Ubuntu 20.04)"  = "ubuntu"
+    "Outdated vGPU (Alma Linux 10)"  = "almalinux"
     "Outdated vGPU (Ubuntu 22.04)"  = "ubuntu"
     "Outdated vGPU (Ubuntu 24.04)"  = "ubuntu"
   }
