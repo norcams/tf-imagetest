@@ -66,7 +66,7 @@ resource "openstack_networking_secgroup_rule_v2" "rule_icmp_access_ipv6" {
 ## Instance
 resource "openstack_compute_instance_v2" "basic" {
   count = length(var.gold_images) * var.ncount
-  name = "${var.region}-${var.name}-${count.index}-${lookup(
+  name = "${var.region}-${var.name}-${format("%02d", count.index + 1)}-${lookup(
     var.image_names,
     element(var.gold_images, count.index),
     "unknown",
