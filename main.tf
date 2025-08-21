@@ -93,7 +93,7 @@ resource "openstack_compute_instance_v2" "basic" {
 resource "openstack_blockstorage_volume_v3" "volume" {
   count       = length(var.gold_images) * var.ncount
   region      = var.region
-  name        = "${var.region}-${var.name}-${count.index}"
+  name        = "${var.region}-${var.name}-${format("%02d", count.index + 1)}"
   size        = var.volume_size
   volume_type = var.volume_type
 }
